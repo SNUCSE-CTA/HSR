@@ -1,93 +1,40 @@
 # Finding Highly Similar Regions of Genomic Sequences through Homomorphic Encryption
 
-A tool that computes optimal and approximate local alignments between two encrypted genomic sequences with affine gap penalty.
+## Bitwise implementation using TFHE scheme
+Stored in `bitwise` directory
 
-## Requirement
-
-OpenMP<br/>
+### Requirement
 [TFHE](https://tfhe.github.io/)<br/>
-[HEaan.STAT](https://www.cryptolab.co.kr/eng/product/heaan.php)<br/>
 OpenMP
 
-## Run
+### Build
+```
+make all
+```
+### Run
+```
+./main <file_X> <file_Y> <|X|> <|R|> <w_int> 
+```
+### Sample run
+```
+./main ../dataset/paper_x.dat ../dataset/paper_y.dat 5 27 9 
+```
+## Wordwise implementation using HEAAN scheme
+Stored in `wordwise` directory
 
-## Default parameter
+### Requirement
+[HEaan.STAT](https://www.cryptolab.co.kr/eng/product/heaan.php)<br/> (license is required)
 
-HE scheme: TFHE<br/>
-Scoring scheme: 5/-3, -9, -1
-
-## Sample input
-
-For optimal local alignment: x.fasta, y.fasta<br/>
-For approximate local alignment: x.vcf, y.vcf
-
-## Sample run
-
-Compute optimal local alignment:
+### Build
+```
+cmake ./
+make
 
 ```
-python3 homla.py opt x.fasta y.fasta --scheme 5,-3,-9,-1
+### Run
 ```
-
-Output:
-
+./main <file_X> <file_Y> <|X|> <|R|> <l> <q> <d>
 ```
-Scoring scheme: 5/-3, -9, -1
-Input: x.fasta y.fasta
-Lengths : 7 9
-Encryption time: 1.01s
-Homomorphically evaluating alignment...
-Homomorphic computation time: 80.64s
-Decryption time: 0.43s
-RESULT
-------------------
-Score: 11
-Starting pos: 2 3
-Ending pos: 5 7
+### Sample run
 ```
-
-Compute approximate local alignment:
-
-```
-python3 homla.py app x.vcf y.vcf 26 --scheme 5,-3,-9,-1 --lib TFHE
-```
-
-Output:
-
-```
-Scoring scheme: 5/-3, -9, -1
-Input: x.vcf y.vcf
-Number of varaints: 5
-Length of Reference Genome: 26
-Encryption time: 1.04s
-Homomorphically computing alignment...
-Homomorphic computation time: 31.30s
-Decryption time: 0.29s
-RESULT
-------------------
-Score: 33
-Starting pos: 5
-Ending pos: 16
-```
-
-Or
-
-```
-python3 homla.py app x.vcf y.vcf 26 --scheme 5,-3,-9,-1 --lib HEAAN
-```
-
-Output:
-
-```
-Scoring scheme: 5/-3, -9, -1
-Input: x.vcf y.vcf
-Number of varaints: 5
-Length of Reference Genome: 26
-Encryption time: 3.54s
-Homomorphically computing alignment...
-Homomorphic computation time: 623.59s
-Decryption time: 0.06s
-RESULT
-------------------
-Score: 32.82
-```
+./main ../dataset/paper_x.dat ../dataset/paper_y.dat 5 27 50 29 11
