@@ -1,4 +1,4 @@
-# Homomorphic Computations of Optimal and Approximate Local Alignments
+# Finding Highly Similar Regions of Genomic Sequences through Homomorphic Encryption
 
 A tool that computes optimal and approximate local alignments between two encrypted genomic sequences with affine gap penalty.
 
@@ -7,15 +7,9 @@ A tool that computes optimal and approximate local alignments between two encryp
 OpenMP<br/>
 [TFHE](https://tfhe.github.io/)<br/>
 [HEaan.STAT](https://www.cryptolab.co.kr/eng/product/heaan.php)<br/>
-Python 3
+OpenMP
 
 ## Run
-
-```
-python3 homla.py (app|opt) inputFileX inputFileY [reflen] [--scheme M,S,Go,Ge] [--lib (TFHE|HEAAN)]
-```
-
-`M`-Match score, `S`-Mismatch score, `Go`-Gap opening penalty, and `Ge`-Gap extending penalty.
 
 ## Default parameter
 
