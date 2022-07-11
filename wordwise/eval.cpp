@@ -1,4 +1,4 @@
-#include "wd.h"
+#include "eval.h"
 
 double len_scale = 100.0;
 double score_scale = 1000.0;

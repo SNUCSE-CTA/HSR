@@ -1,6 +1,6 @@
 
-#ifndef BT_H
-#define BT_H
+#ifndef EVAL_H
+#define EVAL_H
 
 #include "core.h"
 

@@ -1,4 +1,4 @@
-#include "bt.h"
+#include "eval.h"
 #include "par_circuit.h"
 #include "seq_circuit.h"
 
@@ -43,39 +43,44 @@ void var_score(LS *v, LS *lref, cvcf X, cvcf Y, const int s_m, const int s_s,
 
     LS *c = new_gate_bootstrapping_ciphertext_array(2, ck->params);
 
+    // Eq. (7)
     compare(c, X.reflen, Y.reflen, w_int, ck);
     select(lref, c, X.reflen, Y.reflen, w_int, ck);
     subtract(t1, X.altlen, X.reflen, w_int, ck);
     subtract(t2, Y.altlen, Y.reflen, w_int, ck);
 
+    // Eq. (12) and (13)
     add(gx, lref, t1, w_int, ck);
     add(gy, lref, t2, w_int, ck);
 
+    // Eq. (8) and (9)
     compare(c, t1, t2, w_int, ck);
     select(lmax, c, t1, t2, w_int, ck);
     select(lmin, c, t2, t1, w_int, ck);
 
+    // Eq. (5)
     add(m, lref, lmin, w_int, ck);
+    // Eq. (6)
     subtract(g, lmax, lmin, w_int, ck);
 
-    // Equals alt
+    // Checking x.alt == y.alt
     equals(&c[0], X.altlen, Y.altlen, w_int, ck);
     equals(&c[1], X.alt, Y.alt, w_alt, ck);
     bootsAND(c, &c[0], &c[1], ck);
 
-    // Score computation v'
+    // Eq. (10)
     multiply_const(lmax, m, s_m, w_int, ck);
     multiply_const(lmin, m, s_s, w_int, ck);
     W(t1, g, g_o, g_e, w_int, ck);
     select(t2, c, lmax, lmin, w_int, ck);
     add(v1, t1, t2, w_int, ck);
 
-    // Score computation v"
+    // Eq. (14)
     W(t1, gx, g_o, g_e, w_int, ck);
     W(t2, gy, g_o, g_e, w_int, ck);
     add(v2, t1, t2, w_int, ck);
 
-    // Total score
+    // Eq. (15)
     compare(c, v1, v2, w_int, ck);
     select(v, c, v1, v2, w_int, ck);
 

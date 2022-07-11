@@ -1,5 +1,5 @@
-#ifndef WD_H
-#define WD_H
+#ifndef EVAL_H
+#define EVAL_H
 
 #include "core.h"
 

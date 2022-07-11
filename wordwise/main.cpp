@@ -1,5 +1,5 @@
 #include "enc.h"
-#include "wd.h"
+#include "eval.h"
 
 using namespace std;
 using namespace heaan;
@@ -36,13 +36,13 @@ int main(int argc, char *argv[]) {
     int w_alt = 24;
 
     int size = 18;
-    string file_X = "toy_X.dat";
-    string file_Y = "toy_Y.dat";
+    string file_x = "../dataset/paper_x.dat"; // list X
+    string file_y = "../dataset/paper_y.dat"; // list Y
     int R_len = 123;
 
     if (argc == 8) {
-        file_X = argv[1];
-        file_Y = argv[2];
+        file_x = argv[1];
+        file_y = argv[2];
         size = atoi(argv[3]);
         R_len = atoi(argv[4]);
         l = atoi(argv[5]);
@@ -60,8 +60,8 @@ int main(int argc, char *argv[]) {
     int n = 1 << log_n;
 
     cout << "Input" << endl << "-----------------" << endl;
-    cout << "X: " << file_X << endl;
-    cout << "Y: " << file_Y << endl;
+    cout << "X: " << file_x << endl;
+    cout << "Y: " << file_y << endl;
     cout << "|X|=|Y|: " << size << endl;
     cout << "|R|: " << R_len << endl;
     cout << "l: " << l << endl;
@@ -96,7 +96,7 @@ int main(int argc, char *argv[]) {
 
     cvcf X, Y;
     cout << "Encrypting input ..." << endl;
-    encrypt(X, Y, file_X, file_Y, size, n, w_alt, enc, keypack);
+    encrypt(X, Y, file_x, file_y, size, n, w_alt, enc, keypack);
     cout << "Encryption done." << endl;
 
     // vector<double> ds = decrypt_val(X.pos, n, dec, secret_key);
