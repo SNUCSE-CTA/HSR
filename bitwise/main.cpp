@@ -69,7 +69,7 @@ int main(int argc, char *argv[]) {
     TFheGateBootstrappingParameterSet *params =
         new_default_gate_bootstrapping_parameters(minimum_lambda);
 
-    uint32_t seed[] = {314, 1592, 657};
+    uint32_t seed[] = {314, 1592, 1093};
     tfhe_random_generator_setSeed(seed, 3);
     TFheGateBootstrappingSecretKeySet *key =
         new_random_gate_bootstrapping_secret_keyset(params);

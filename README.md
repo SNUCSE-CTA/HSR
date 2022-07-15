@@ -12,7 +12,7 @@ OpenMP
 ### Build
 
 ```
-make all
+make
 ```
 
 ### Run
