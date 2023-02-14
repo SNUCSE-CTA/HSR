@@ -1,6 +1,6 @@
 # Finding Highly Similar Regions of Genomic Sequences through Homomorphic Encryption
 
-## Bitwise implementation using TFHE scheme
+## Bitwise implementation HSR<sub>B</sub> using TFHE scheme
 
 Stored in `bitwise` directory
 
@@ -24,10 +24,10 @@ make
 ### Sample run
 
 ```
-./main ../dataset/paper_x.dat ../dataset/paper_y.dat 5 27 9
+./main ../dataset/paper_x.dat ../dataset/paper_y.dat 5 29 9
 ```
 
-## Wordwise implementation using HEAAN scheme
+## Wordwise implementation HSR<sub>W</sub> using HEAAN scheme
 
 Stored in `wordwise` directory
 
@@ -52,5 +52,5 @@ make
 ### Sample run
 
 ```
-./main ../dataset/paper_x.dat ../dataset/paper_y.dat 5 27 50 29 11
+./main ../dataset/paper_x.dat ../dataset/paper_y.dat 5 29 50 29 11
 ```

@@ -24,7 +24,7 @@ void W(LS *r, const LS *l, int g_o, int g_e, int w_int, const CK *ck) {
     delete_gate_bootstrapping_ciphertext_array(w_int, go);
 }
 
-// BT-VarScore
+// HSR_B-VarScore
 void var_score(LS *v, LS *lref, cvcf X, cvcf Y, const int s_m, const int s_s,
                const int g_o, const int g_e, int w_int, int w_alt,
                const CK *ck) {
@@ -98,7 +98,7 @@ void var_score(LS *v, LS *lref, cvcf X, cvcf Y, const int s_m, const int s_s,
     delete_gate_bootstrapping_ciphertext_array(2, c);
 }
 
-// BT-Score
+// HSR_B-Score
 void score(LS **V, LS **M, LS **S, LS **E, cvcf *X, cvcf *Y, const int size,
            int R_len, const int s_m, const int s_s, const int g_o,
            const int g_e, int w_int, int w_alt, const CK *ck) {
@@ -131,7 +131,7 @@ void score(LS **V, LS **M, LS **S, LS **E, cvcf *X, cvcf *Y, const int size,
     }
 }
 
-// BT-Find
+// HSR_B-Find
 void find(LS *m, LS *s, LS *e, LS **V, LS **M, LS **S, LS **E, int size,
           int w_int, const CK *ck) {
     // max subarray
